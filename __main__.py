@@ -28,7 +28,7 @@ async def on_message(message):
             return
         target = " ".join(target)
         await message.channel.send(f"Looking up information on **{target}**...")
-        api_url = "https://tabber.cicis.info/lookup"
+        api_url = "https://tabber.cicis.info/api/lookup"
         response = requests.post(
             api_url,
             json={"name": target},
