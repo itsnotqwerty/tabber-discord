@@ -27,6 +27,7 @@ async def on_message(message):
             await message.channel.send("Usage: !lookup <PERSON_NAME>")
             return
         target = " ".join(target)
+        await message.channel.send(f"Looking up information on **{target}**...")
         api_url = "https://tabber.cicis.info/lookup"
         response = requests.post(
             api_url,
@@ -39,7 +40,7 @@ async def on_message(message):
             result = data["result"]
             if result:
                 await message.channel.send(
-                    f"**Name:** {data['canon_name']}\n**Location (Best Guess):** {result['location']}\n**Reasoning:** {result['reasoning']}"
+                    f"**Query:** {target}\n**Name:** {data['canon_name']}\n**Location (Best Guess):** {result['location']}\n**Reasoning:** {result['reasoning']}"
                 )
             else:
                 await message.channel.send("No results found.")
