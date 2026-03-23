@@ -47,4 +47,9 @@ async def on_message(message):
             await message.channel.send("Lookup failed. Please try again later.")
 
 
-client.run(os.getenv("DISCORD_TOKEN"))
+if __name__ == "__main__":
+    token = os.getenv("DISCORD_TOKEN")
+    if token is None:
+        print("Error: DISCORD_TOKEN environment variable not set.")
+    else:
+        client.run(token)
